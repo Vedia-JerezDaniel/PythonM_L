@@ -198,7 +198,11 @@ Image(filename='images/05_06.png', width=400)
 np.set_printoptions(precision=4)
 
 mean_vecs = []
+<<<<<<< HEAD
 for label in range(1, 4):
+=======
+for label in range(1, 5):
+>>>>>>> 67e5c25eb8d46b493d3593cd01814f88bf0a18b1
     mean_vecs.append(np.mean(X_train_std[y_train == label], axis=0))
     print('MV get_ipython().run_line_magic("s:", " %s\n' % (label, mean_vecs[label - 1]))")
 
@@ -348,8 +352,11 @@ else:
     from scipy import exp
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 67e5c25eb8d46b493d3593cd01814f88bf0a18b1
 def rbf_kernel_pca(X, gamma, n_components):
     """
     RBF kernel PCA implementation.
@@ -400,7 +407,11 @@ def rbf_kernel_pca(X, gamma, n_components):
 import matplotlib.pyplot as plt
 from sklearn.datasets import make_moons
 
+<<<<<<< HEAD
 X, y = make_moons(n_samples=100, random_state=123)
+=======
+X, y = make_moons(n_samples=200, random_state=123)
+>>>>>>> 67e5c25eb8d46b493d3593cd01814f88bf0a18b1
 
 plt.scatter(X[y == 0, 0], X[y == 0, 1], color='red', marker='^', alpha=0.5)
 plt.scatter(X[y == 1, 0], X[y == 1, 1], color='blue', marker='o', alpha=0.5)
@@ -422,9 +433,15 @@ ax[0].scatter(X_spca[y == 0, 0], X_spca[y == 0, 1],
 ax[0].scatter(X_spca[y == 1, 0], X_spca[y == 1, 1],
               color='blue', marker='o', alpha=0.5)
 
+<<<<<<< HEAD
 ax[1].scatter(X_spca[y == 0, 0], np.zeros((50, 1)) + 0.02,
               color='red', marker='^', alpha=0.5)
 ax[1].scatter(X_spca[y == 1, 0], np.zeros((50, 1)) - 0.02,
+=======
+ax[1].scatter(X_spca[y == 0, 0], np.zeros((100, 1)) + 0.02,
+              color='red', marker='^', alpha=0.5)
+ax[1].scatter(X_spca[y == 1, 0], np.zeros((100, 1)) - 0.02,
+>>>>>>> 67e5c25eb8d46b493d3593cd01814f88bf0a18b1
               color='blue', marker='o', alpha=0.5)
 
 ax[0].set_xlabel('PC1')
@@ -446,9 +463,15 @@ ax[0].scatter(X_kpca[y==0, 0], X_kpca[y==0, 1],
 ax[0].scatter(X_kpca[y==1, 0], X_kpca[y==1, 1],
             color='blue', marker='o', alpha=0.5)
 
+<<<<<<< HEAD
 ax[1].scatter(X_kpca[y==0, 0], np.zeros((50, 1))+0.02, 
             color='red', marker='^', alpha=0.5)
 ax[1].scatter(X_kpca[y==1, 0], np.zeros((50, 1))-0.02,
+=======
+ax[1].scatter(X_kpca[y==0, 0], np.zeros((100, 1))+0.02, 
+            color='red', marker='^', alpha=0.5)
+ax[1].scatter(X_kpca[y==1, 0], np.zeros((100, 1))-0.02,
+>>>>>>> 67e5c25eb8d46b493d3593cd01814f88bf0a18b1
             color='blue', marker='o', alpha=0.5)
 
 ax[0].set_xlabel('PC1')
@@ -464,7 +487,11 @@ plt.show()
 
 from sklearn.datasets import make_circles
 
+<<<<<<< HEAD
 X, y = make_circles(n_samples=1000, random_state=123, noise=0.1, factor=0.2)
+=======
+X, y = make_circles(n_samples=1000, random_state=123, noise=0.3, factor=0.4)
+>>>>>>> 67e5c25eb8d46b493d3593cd01814f88bf0a18b1
 
 plt.scatter(X[y == 0, 0], X[y == 0, 1], color='red', marker='^', alpha=0.5)
 plt.scatter(X[y == 1, 0], X[y == 1, 1], color='blue', marker='o', alpha=0.5)
@@ -560,7 +587,11 @@ def rbf_kernel_pca(X, gamma, n_components):
     mat_sq_dists = squareform(sq_dists)
 
     # Compute the symmetric kernel matrix.
+<<<<<<< HEAD
     K = exp(-gamma * mat_sq_dists)
+=======
+    K = np.exp(-gamma * mat_sq_dists)
+>>>>>>> 67e5c25eb8d46b493d3593cd01814f88bf0a18b1
 
     # Center the kernel matrix.
     N = K.shape[0]
@@ -582,7 +613,11 @@ def rbf_kernel_pca(X, gamma, n_components):
     return alphas, lambdas
 
 
+<<<<<<< HEAD
 X, y = make_moons(n_samples=100, random_state=123)
+=======
+X, y = make_moons(n_samples=200, random_state=123)
+>>>>>>> 67e5c25eb8d46b493d3593cd01814f88bf0a18b1
 alphas, lambdas = rbf_kernel_pca(X, gamma=15, n_components=1)
 
 
@@ -601,12 +636,21 @@ def project_x(x_new, X, gamma, alphas, lambdas):
 
 # projection of the "new" datapoint
 x_reproj = project_x(x_new, X, gamma=15, alphas=alphas, lambdas=lambdas)
+<<<<<<< HEAD
 x_reproj 
 
 
 plt.scatter(alphas[y == 0, 0], np.zeros((50)),
             color='red', marker='^', alpha=0.5)
 plt.scatter(alphas[y == 1, 0], np.zeros((50)),
+=======
+x_reproj
+
+
+plt.scatter(alphas[y == 0, 0], np.zeros((100)),
+            color='red', marker='^', alpha=0.5)
+plt.scatter(alphas[y == 1, 0], np.zeros((100)),
+>>>>>>> 67e5c25eb8d46b493d3593cd01814f88bf0a18b1
             color='blue', marker='o', alpha=0.5)
 plt.scatter(x_proj, 0, color='black',
             label='Original projection of point X[25]', marker='^', s=100)
@@ -622,7 +666,11 @@ plt.show()
 
 from sklearn.decomposition import KernelPCA
 
+<<<<<<< HEAD
 X, y = make_moons(n_samples=100, random_state=123)
+=======
+X, y = make_moons(n_samples=200, random_state=123)
+>>>>>>> 67e5c25eb8d46b493d3593cd01814f88bf0a18b1
 scikit_kpca = KernelPCA(n_components=2, kernel='rbf', gamma=15)
 X_skernpca = scikit_kpca.fit_transform(X)
 
@@ -638,4 +686,36 @@ plt.tight_layout()
 plt.show()
 
 
+<<<<<<< HEAD
+=======
+X, y = make_circles(n_samples=1000, random_state=123, noise=0.3, factor=0.4)
+
+plt.scatter(X[y == 0, 0], X[y == 0, 1], color='red', marker='^', alpha=0.5)
+plt.scatter(X[y == 1, 0], X[y == 1, 1], color='blue', marker='o', alpha=0.5)
+
+plt.tight_layout()
+# plt.savefig('images/05_15.png', dpi=300)
+plt.show()
+
+
+
+scikit_kpca = KernelPCA(n_components=3, kernel='poly', degree=3, gamma=15)
+X_skernpca = scikit_kpca.fit_transform(X)
+
+plt.scatter(X_skernpca[y == 0, 0], X_skernpca[y == 0, 1],
+            color='red', marker='^', alpha=0.5)
+plt.scatter(X_skernpca[y == 1, 0], X_skernpca[y == 1, 1],
+            color='blue', marker='o', alpha=0.5)
+
+plt.xlabel('PC1')
+plt.ylabel('PC2')
+plt.tight_layout()
+# plt.savefig('images/05_19.png', dpi=300)
+plt.show()
+
+
+
+
+
+>>>>>>> 67e5c25eb8d46b493d3593cd01814f88bf0a18b1
 ! python ../.convert_notebook_to_script.py --input ch05.ipynb --output ch05.py
