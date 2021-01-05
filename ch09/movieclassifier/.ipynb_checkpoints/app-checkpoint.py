@@ -43,13 +43,11 @@ class ReviewForm(Form):
                                 validators.length(min=15)])
 
 @app.route('/')
-
 def index():
     form = ReviewForm(request.form)
     return render_template('reviewform.html', form=form)
 
 @app.route('/results', methods=['POST'])
-
 def results():
     form = ReviewForm(request.form)
     if request.method == 'POST' and form.validate():
@@ -62,7 +60,6 @@ def results():
     return render_template('reviewform.html', form=form)
 
 @app.route('/thanks', methods=['POST'])
-
 def feedback():
     feedback = request.form['feedback_button']
     review = request.form['review']
@@ -77,4 +74,4 @@ def feedback():
     return render_template('thanks.html')
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

@@ -3,17 +3,19 @@ from wtforms import Form, TextAreaField, validators
 
 app = Flask(__name__)
 
-class HelloForm(Form):
+class Hello(Form):
     sayhello = TextAreaField('',[validators.DataRequired()])
 
 @app.route('/')
+
 def index():
-    form = HelloForm(request.form)
+    form = Hello(request.form)
     return render_template('first_app.html', form=form)
 
 @app.route('/hello', methods=['POST'])
+
 def hello():
-    form = HelloForm(request.form)
+    form = Hello(request.form)
     if request.method == 'POST' and form.validate():
         name = request.form['sayhello']
         return render_template('hello.html', name=name)
