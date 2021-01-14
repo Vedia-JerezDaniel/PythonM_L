@@ -30,8 +30,7 @@ class NeuralNetMLP(object):
       and validation accuracy for each epoch during training.
 
     """
-    def __init__(self, n_hidden=30,
-                 l2=0., epochs=100, eta=0.001,
+    def __init__(self, n_hidden=30, l2=0., epochs=100, eta=0.001,
                  shuffle=True, minibatch_size=1, seed=None):
 
         self.random = np.random.RandomState(seed)
@@ -55,8 +54,8 @@ class NeuralNetMLP(object):
         Returns
         -----------
         onehot : array, shape = (n_examples, n_labels)
-
         """
+
         onehot = np.zeros((n_classes, y.shape[0]))
         for idx, val in enumerate(y.astype(int)):
             onehot[val, idx] = 1.
@@ -72,6 +71,7 @@ class NeuralNetMLP(object):
         # step 1: net input of hidden layer
         # [n_examples, n_features] dot [n_features, n_hidden]
         # -> [n_examples, n_hidden]
+
         z_h = np.dot(X, self.w_h) + self.b_h
 
         # step 2: activation of hidden layer
@@ -104,8 +104,7 @@ class NeuralNetMLP(object):
             Regularized cost
 
         """
-        L2_term = (self.l2 *
-                   (np.sum(self.w_h ** 2.) +
+        L2_term = (self.l2 * (np.sum(self.w_h ** 2.) +
                     np.sum(self.w_out ** 2.)))
 
         term1 = -y_enc * (np.log(output))
@@ -142,6 +141,7 @@ class NeuralNetMLP(object):
             Predicted class labels.
 
         """
+
         z_h, a_h, z_out, a_out = self._forward(X)
         y_pred = np.argmax(z_out, axis=1)
         return y_pred
@@ -174,13 +174,11 @@ class NeuralNetMLP(object):
 
         # weights for input -> hidden
         self.b_h = np.zeros(self.n_hidden)
-        self.w_h = self.random.normal(loc=0.0, scale=0.1,
-                                      size=(n_features, self.n_hidden))
+        self.w_h = self.random.normal(loc=0.0, scale=0.1, size=(n_features, self.n_hidden))
 
         # weights for hidden -> output
         self.b_out = np.zeros(n_output)
-        self.w_out = self.random.normal(loc=0.0, scale=0.1,
-                                        size=(self.n_hidden, n_output))
+        self.w_out = self.random.normal(loc=0.0, scale=0.1, size=(self.n_hidden, n_output))
 
         epoch_strlen = len(str(self.epochs))  # for progress formatting
         self.eval_ = {'cost': [], 'train_acc': [], 'valid_acc': []}
@@ -196,8 +194,7 @@ class NeuralNetMLP(object):
             if self.shuffle:
                 self.random.shuffle(indices)
 
-            for start_idx in range(0, indices.shape[0] - self.minibatch_size +
-                                   1, self.minibatch_size):
+            for start_idx in range(0, indices.shape[0] - self.minibatch_size + 1, self.minibatch_size):
                 batch_idx = indices[start_idx:start_idx + self.minibatch_size]
 
                 # forward propagation
